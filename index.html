@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        body,
+        html {
+            height: 100%;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        @font-face {
+            font-family: "erikos";
+            src: url(./erikos.55faeaa5.woff2);
+        }
+
+        #root {
+            height: 100%;
+        }
+
+        .main {
+            width: 100vw;
+            height: 100%;
+            position: relative;
+            background-color: #4456a7;
+            font-family: erikos, Helvetica Neue, Helvetica, Arial, Hiragino Sans GB, Hiragino Sans GB W3, WenQuanYi Micro Hei, sans-serif;
+            overflow: hidden;
+        }
+
+        .main header {
+            width: 100%;
+            background-color: #fff;
+            border-bottom: 1px solid#111;
+            height: 36px;
+        }
+
+        .app-center {
+            width: calc(100% - 120px);
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .main header nav::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .nav>span,
+        .nav span~a {
+            display: block;
+            float: left;
+            font-weight: bolder;
+            color: #111;
+            position: relative;
+            z-index: 1;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .nav>span {
+            padding: 9px 12px 0 0;
+        }
+
+        .nav span~a {
+            padding: 0 10px;
+            cursor: pointer;
+            line-height: 36px;
+            font-size: 18px;
+            position: relative;
+        }
+
+        .nav span~a::after {
+            content: "";
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -14px;
+            margin-top: -14px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 3px solid #ffd03f;
+            background-color: #fff;
+            z-index: -1;
+            transform: scale(0);
+            transition: all 0.2s;
+        }
+
+        .nav a.nav-index::after {
+            background-color: #ffd03f;
+            transform: scale(1);
+            -webkit-animation: indexs .15s ease-out forwards;
+            animation: indexs .15s ease-out forwards;
+        }
+
+        .nav a:hover::after {
+            transform: scale(1);
+        }
+
+        .main header .times {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+        }
+
+        .main header .times a {
+            display: block;
+            padding: 7px 10px;
+            float: left;
+        }
+
+        .main header .times time {
+            float: left;
+            display: block;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 38px;
+        }
+
+        .page {
+            height: calc(100% - 36px);
+
+        }
+
+        .page .app-center {
+            height: 100%;
+        }
+
+        .home_text {
+            font-size: 106px;
+            color: #ffff;
+            line-height: 1.2;
+            padding-top: 54px;
+        }
+
+        .home_text_animate {
+            position: relative;
+            z-index: 1;
+            color: color;
+
+
+				text-transform: uppercase;
+				
+				margin: 0;
+				background: url('img/104.jpg') 50% 50%;
+				background-size: cover;
+				-webkit-text-fill-color: transparent;
+				-webkit-background-clip: text;
+				background-clip: text;
+        }
+
+        .home_text_animate strong {
+            margin-left: 18px;
+            font-size: 64px;
+        }
+
+        .home_footer {
+            width: 100%;
+            position: absolute;
+            bottom: 6px;
+        }
+
+        .home_footer ul {
+            display: flex;
+            width: 100%;
+            margin: 0 auto;
+            flex-wrap: wrap;
+
+        }
+
+        .home_footer ul li {
+            border-top: 1px solid #111;
+            text-align: center;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            border-right: 1px solid#111;
+            display: block;
+            line-height: 64px;
+            font-size: 18px;
+        }
+
+        .home_footer ul li:nth-child(4) {
+            -ms-flex-positive: 4;
+            flex-grow: 4;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .home_footer ul li:nth-child(5) {
+            border-right: none;
+            font-size: 12px;
+            color: white;
+        }
+
+        b {
+            color: #ffd03f;
+        }
+
+        .home_figureBox {
+            position: absolute;
+            z-index: 800;
+            top: 4px;
+            right: -14px;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+        }
+
+        .figure-flex {
+            -ms-flex: 0 1 auto;
+            flex: 0 1 auto;
+        }
+
+        .figure-flex figure {
+            margin: 12px;
+            max-width: 64px;
+            cursor: pointer;
+            
+        }
+
+        img {
+            border: 0;
+        }
+
+        .figure-flex figure img {
+            margin: 0 auto;
+            display: block;
+            
+        }
+
+        .figure-flex figure figcaption {
+            text-align: center;
+            color: #fff;
+            font-size: 18px;
+            margin-top: 4px;
+            font-family: lucida Grande, Verdana;
+        }
+
+        .figure-flex figure:hover{
+            animation: move  .5s linear;
+        }
+
+        @keyframes move{
+            0% {transform: translateY(0);}
+            25% {transform: translateY(-10px);}
+            50% {transform: translateY(0);}
+            75% {transform: translateY(-10px);}
+            100% {transform: translateY(0);}
+        }
+
+        body,html{
+		width: 100%;
+		height: 100%;
+		overflow:hidden
+	}
+
+	body{
+		margin: 0;
+		padding: 0;
+		background: #9b59b6;
+	}
+	.bubbels{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: 0;
+		overflow: hidden;
+		top: 0;
+		left: 0;
+	}
+	.bubble{
+		position: absolute;
+		bottom: 0;
+		width: 40px;
+		height: 40px;
+		
+        background-image: url('img/fengye.jpg');
+        background-size: 150% 150%;
+        background-position: center center;
+		border-radius: 50%;
+		opacity: 0.5;
+		animation: flying 10s infinite ease-in;
+	}
+
+	
+	.bubble:nth-child(2){
+		width: 40px;
+		height: 40px;
+		left: 20%;
+		animation-duration: 5s;
+		animation-delay: 1s;
+	}
+	.bubble:nth-child(3){
+		width: 50px;
+		height: 50px;
+		left: 35%;
+		animation-duration: 10s;
+		animation-delay: 2s;
+	}
+	.bubble:nth-child(4){
+		width: 80px;
+		height: 80px;
+		left: 50%;
+		animation-duration: 7s;
+		animation-delay: 0s;
+	}
+	.bubble:nth-child(5){
+		width: 35px;
+		height: 35px;
+		left: 55%;
+		animation-duration: 6s;
+		animation-delay: 1s;
+	}
+	.bubble:nth-child(6){
+		width: 45px;
+		height: 45px;
+		left: 65%;
+		animation-duration: 8s;
+		animation-delay: 3s;
+	}
+	.bubble:nth-child(7){
+		width: 25px;
+		height: 25px;
+		left: 75%;
+		animation-duration: 7s;
+		animation-delay: 2s;
+	}
+	.bubble:nth-child(8){
+		width: 80px;
+		height: 80px;
+		left: 80%;
+		animation-duration: 6s;
+		animation-delay: 1s;
+	}
+	.bubble:nth-child(9){
+		width: 15px;
+		height: 15px;
+		left: 75%;
+		animation-duration: 9s;
+		animation-delay: 0s;
+	}
+	.bubble:nth-child(10){
+		width: 50px;
+		height: 50px;
+		left: 85%;
+		animation-duration: 5s;
+		animation-delay: 3s;
+	}
+
+	@keyframes flying{
+		0%{
+			bottom: -100px;
+			transform: translateX(0);
+			opacity: 0;
+		}
+		50%{
+			opacity: 1;
+			transform: translateX(100px);
+		}
+		100%{
+			opacity: 0;
+			bottom: 1080px;
+			transform: translateX(-200px);
+		}
+	}
+
+    .login {
+            display: none;
+            width: 512px;
+            height: 280px;
+            position: fixed;
+            border: #ebebeb solid 1px;
+            left: 50%;
+            top: 50%;
+            background: #ffffff;
+            box-shadow: 0px 0px 20px #ddd;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+        }
+        
+        .login-title {
+            width: 100%;
+            margin: 10px 0px 0px 0px;
+            text-align: center;
+            line-height: 40px;
+            height: 40px;
+            font-size: 18px;
+            position: relative;
+            cursor: move;
+        }
+        
+        .login-input-content {
+            margin-top: 20px;
+        }
+        
+        .login-button {
+            width: 50%;
+            margin: 30px auto 0px auto;
+            line-height: 40px;
+            font-size: 14px;
+            border: #ebebeb 1px solid;
+            text-align: center;
+        }
+        
+        .login-bg {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            background: rgba(0, 0, 0, .3);
+        }
+        
+        a {
+            text-decoration: none;
+            color: #000000;
+        }
+        
+        .login-button a {
+            display: block;
+        }
+        
+        .login-input input.list-input {
+            float: left;
+            line-height: 35px;
+            height: 35px;
+            width: 350px;
+            border: #ebebeb 1px solid;
+            text-indent: 5px;
+        }
+        
+        .login-input {
+            overflow: hidden;
+            margin: 0px 0px 20px 0px;
+        }
+        
+        .login-input label {
+            float: left;
+            width: 90px;
+            padding-right: 10px;
+            text-align: right;
+            line-height: 35px;
+            height: 35px;
+            font-size: 14px;
+        }
+        
+        .login-title span {
+            position: absolute;
+            font-size: 12px;
+            right: -20px;
+            top: -30px;
+            background: #ffffff;
+            border: #ebebeb solid 1px;
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+        }
+    </style>
+
+<script>
+        window.onload=function(){
+
+
+            //初始化时间
+            fnDate();
+
+            //定时器进行当前时间更新
+            setInterval(function () {
+                fnDate();
+            }, 1000);
+            //获取当前时间
+            function fnDate() {
+                var ntime = document.querySelector('.nowtime')
+                var time = document.querySelector('time');
+                var date = new Date();
+                var year = date.getFullYear(); //获取当前年份   
+                var mon = date.getMonth() + 1; //获取当前月份   
+                var da = date.getDate(); //获取当前日   
+                var hours = date.getHours();//小时
+                var minute = date.getMinutes();//分
+                var second = date.getSeconds();//秒
+                var nowtime = fnW(hours) + ":" + fnW(minute) + ":" + fnW(second);
+                var nowtime1 = "Date =  " + fnW(year) + "/" + fnW(mon) + "/" + da;
+                time.innerHTML = nowtime;
+                ntime.innerHTML = nowtime1
+            }
+            //小于10加0
+            function fnW(str) {
+                var num;
+                str >= 10 ? num = str : num = "0" + str;
+                return num;
+            }
+
+
+
+
+            //导航栏效果
+            var nava = document.querySelectorAll('.nav a')
+            for (var i = 0; i < nava.length; i++) {
+                nava[i].index = i;
+                nava[i].addEventListener("click", function () {
+                    for (var i = 0; i < nava.length; i++) {
+                        nava[i].classList.remove('nav-index')
+                    }
+                    this.className = 'nav-index'
+                })
+            }
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // 1. 获取元素
+            var login = document.querySelector('.login');
+            var mask = document.querySelector('.login-bg');
+            var link = document.querySelector('.login1');
+            var closeBtn = document.querySelector('#closeBtn');
+            var title = document.querySelector('#title');
+            // 2. 点击弹出层这个链接 link  让mask 和login 显示出来
+            link.addEventListener('click', function() {
+                console.log('111');
+                
+                    mask.style.display = 'block';
+                    login.style.display = 'block';
+                })
+                // 3. 点击 closeBtn 就隐藏 mask 和 login 
+            closeBtn.addEventListener('click', function() {
+                    mask.style.display = 'none';
+                    login.style.display = 'none';
+                })
+                // 4. 开始拖拽
+                // (1) 当我们鼠标按下， 就获得鼠标在盒子内的坐标
+            title.addEventListener('mousedown', function(e) {
+                var x = e.pageX - login.offsetLeft;
+                var y = e.pageY - login.offsetTop;
+                // (2) 鼠标移动的时候，把鼠标在页面中的坐标，减去 鼠标在盒子内的坐标就是模态框的left和top值
+                document.addEventListener('mousemove', move)
+    
+                function move(e) {
+                    login.style.left = e.pageX - x + 'px';
+                    login.style.top = e.pageY - y + 'px';
+                }
+                // (3) 鼠标弹起，就让鼠标移动事件移除
+                document.addEventListener('mouseup', function() {
+                    document.removeEventListener('mousemove', move);
+                })
+            })
+        }
+        </script>
+</head>
+
+<body>
+
+    <div id="root">
+        <div class="main">
+            <header>
+                <div>
+                    <div class="app-center">
+                        <nav class="nav">
+                            <span><img src="img/index.png" alt=""></span>
+                            <a href="#" class="nav-index">HOME</span></a>
+                            <a href="#">BLOG</span></a>
+                            <a href="#">WORK</a>
+                            <a href="#">ABOUT</a>
+
+                        </nav>
+
+                        <div class="times">
+                            <a href=""><img src="img/github.png" alt=""></a>
+                            <time></time>
+                        </div>
+                    </div>
+
+                </div>
+            </header>
+
+            <main class="page">
+                <div class="app-center">
+                    <div class="home_text">
+                        <span class="home_text_animate">Hey Therew</span><br>
+                        <span class="home_text_animate">I'm Bruce.Au</span><br>
+                        <span class="home_text_animate">( σ'ω')σ<strong>#Skr</strong></span>
+                    </div>
+
+                    <footer class="home_footer">
+                        <ul>
+                            <li>
+                                <b>const</b>
+                                <span class="nowtime"></span>
+                            </li>
+                            <li>
+                                <b>const</b>
+                                UseTime = 4s
+                            </li>
+                            <li>
+                                <b>const</b>
+                                Add=湖南省长沙市
+                            </li>
+                            <li>WWW.VANOC.TOP</li>
+                            <li><span class="icp">粤ICP备17162184号-2</span></li>
+                        </ul>
+                    </footer>
+
+                    <div class="home_figureBox">
+                        <div class="figure-flex">
+                            <figure>
+                                <img src="img/dianzan.png" alt="">
+                                <figcaption>点赞</figcaption>
+                            </figure>
+                        </div>
+                        <div class="figure-flex">
+                            <figure>
+                                <img src="img/shuoming.png" alt="">
+                                <figcaption>说明</figcaption>
+                            </figure>
+                        </div>
+                        <div class="figure-flex">
+                            <figure>
+                                <img src="img/liuyan.png" alt="">
+                                <figcaption>留言</figcaption>
+                            </figure>
+                        </div>
+                        <div class="figure-flex">
+                            <figure>
+                                <img src="img/shezhi.png" alt="">
+                                <figcaption>设置</figcaption>
+                            </figure>
+                        </div>
+                        <div class="figure-flex">
+                                <figure>
+                                    <img src="img/login.png" alt="" class="login1">
+                                    <figcaption>登录</figcaption>
+                                </figure>
+                            </div>
+                    </div>
+                </div>
+            </main>
+
+
+            <div id="login" class="login">
+                    <div id="title" class="login-title">登录会员
+                        <span><a id="closeBtn" href="javascript:void(0);" class="close-login">关闭</a></span>
+                    </div>
+                    <div class="login-input-content">
+                        <div class="login-input">
+                            <label>用户名：</label>
+                            <input type="text" placeholder="请输入用户名" name="info[username]" id="username" class="list-input">
+                        </div>
+                        <div class="login-input">
+                            <label>登录密码：</label>
+                            <input type="password" placeholder="请输入登录密码" name="info[password]" id="password" class="list-input">
+                        </div>
+                    </div>
+                    <div id="loginBtn" class="login-button"><a href="javascript:void(0);" id="login-button-submit">登录会员</a></div>
+                </div>
+                <div id="bg" class="login-bg"></div>
+
+        </div>
+
+
+        <div class="bullels">
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+            </div>
+    </div>
+    </div>
+
+   
+
+    <!-- <script>
+        window.onload = function () {
+            //初始化时间
+            fnDate();
+
+            //定时器进行当前时间更新
+            setInterval(function () {
+                fnDate();
+            }, 1000);
+            //获取当前时间
+            function fnDate() {
+                var ntime = document.querySelector('.nowtime')
+                var time = document.querySelector('time');
+                var date = new Date();
+                var year = date.getFullYear(); //获取当前年份   
+                var mon = date.getMonth() + 1; //获取当前月份   
+                var da = date.getDate(); //获取当前日   
+                var hours = date.getHours();//小时
+                var minute = date.getMinutes();//分
+                var second = date.getSeconds();//秒
+                var nowtime = fnW(hours) + ":" + fnW(minute) + ":" + fnW(second);
+                var nowtime1 = "Date =  " + fnW(year) + "/" + fnW(mon) + "/" + da;
+                time.innerHTML = nowtime;
+                ntime.innerHTML = nowtime1
+            }
+            //小于10加0
+            function fnW(str) {
+                var num;
+                str > 10 ? num = str : num = "0" + str;
+                return num;
+            }
+
+
+
+
+            //导航栏效果
+            var nava = document.querySelectorAll('.nav a')
+            for (var i = 0; i < nava.length; i++) {
+                nava[i].index = i;
+                nava[i].addEventListener("click", function () {
+                    for (var i = 0; i < nava.length; i++) {
+                        nava[i].classList.remove('nav-index')
+                    }
+                    this.className = 'nav-index'
+                })
+            }
+
+        }
+
+    </script> -->
+
+</body>
+
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        body,
+        html {
+            height: 100%;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        @font-face {
+            font-family: "erikos";
+            src: url(./erikos.55faeaa5.woff2);
+        }
+
+        #root {
+            height: 100%;
+        }
+
+        .main {
+            width: 100vw;
+            height: 100%;
+            position: relative;
+            background-color: #4456a7;
+            font-family: erikos, Helvetica Neue, Helvetica, Arial, Hiragino Sans GB, Hiragino Sans GB W3, WenQuanYi Micro Hei, sans-serif;
+            overflow: hidden;
+        }
+
+        .main header {
+            width: 100%;
+            background-color: #fff;
+            border-bottom: 1px solid#111;
+            height: 36px;
+        }
+
+        .app-center {
+            width: calc(100% - 120px);
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .main header nav::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .nav>span,
+        .nav span~a {
+            display: block;
+            float: left;
+            font-weight: bolder;
+            color: #111;
+            position: relative;
+            z-index: 1;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .nav>span {
+            padding: 9px 12px 0 0;
+        }
+
+        .nav span~a {
+            padding: 0 10px;
+            cursor: pointer;
+            line-height: 36px;
+            font-size: 18px;
+            position: relative;
+        }
+
+        .nav span~a::after {
+            content: "";
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -14px;
+            margin-top: -14px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 3px solid #ffd03f;
+            background-color: #fff;
+            z-index: -1;
+            transform: scale(0);
+            transition: all 0.2s;
+        }
+
+        .nav a.nav-index::after {
+            background-color: #ffd03f;
+            transform: scale(1);
+            -webkit-animation: indexs .15s ease-out forwards;
+            animation: indexs .15s ease-out forwards;
+        }
+
+        .nav a:hover::after {
+            transform: scale(1);
+        }
+
+        .main header .times {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+        }
+
+        .main header .times a {
+            display: block;
+            padding: 7px 10px;
+            float: left;
+        }
+
+        .main header .times time {
+            float: left;
+            display: block;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 38px;
+        }
+
+        body,html{
+		width: 100%;
+		height: 100%;
+		overflow:hidden
+	}
+
+	body{
+		margin: 0;
+		padding: 0;
+		background: #9b59b6;
+	}
+	.bubbels{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: 0;
+		overflow: hidden;
+		top: 0;
+		left: 0;
+	}
+	.bubble{
+		position: absolute;
+		bottom: 0;
+		width: 40px;
+		height: 40px;
+		background: #f1f1f1;
+		border-radius: 50%;
+		opacity: 0.5;
+		animation: flying 10s infinite ease-in;
+	}
+
+	
+	.bubble:nth-child(2){
+		width: 40px;
+		height: 40px;
+		left: 20%;
+		animation-duration: 5s;
+		animation-delay: 1s;
+	}
+	.bubble:nth-child(3){
+		width: 50px;
+		height: 50px;
+		left: 35%;
+		animation-duration: 10s;
+		animation-delay: 2s;
+	}
+	.bubble:nth-child(4){
+		width: 80px;
+		height: 80px;
+		left: 50%;
+		animation-duration: 7s;
+		animation-delay: 0s;
+	}
+	.bubble:nth-child(5){
+		width: 35px;
+		height: 35px;
+		left: 55%;
+		animation-duration: 6s;
+		animation-delay: 1s;
+	}
+	.bubble:nth-child(6){
+		width: 45px;
+		height: 45px;
+		left: 65%;
+		animation-duration: 8s;
+		animation-delay: 3s;
+	}
+	.bubble:nth-child(7){
+		width: 25px;
+		height: 25px;
+		left: 75%;
+		animation-duration: 7s;
+		animation-delay: 2s;
+	}
+	.bubble:nth-child(8){
+		width: 80px;
+		height: 80px;
+		left: 80%;
+		animation-duration: 6s;
+		animation-delay: 1s;
+	}
+	.bubble:nth-child(9){
+		width: 15px;
+		height: 15px;
+		left: 75%;
+		animation-duration: 9s;
+		animation-delay: 0s;
+	}
+	.bubble:nth-child(10){
+		width: 50px;
+		height: 50px;
+		left: 85%;
+		animation-duration: 5s;
+		animation-delay: 3s;
+	}
+
+	@keyframes flying{
+		0%{
+			bottom: -100px;
+			transform: translateX(0);
+			opacity: 0;
+		}
+		50%{
+			opacity: 1;
+			transform: translateX(100px);
+		}
+		100%{
+			opacity: 0;
+			bottom: 1080px;
+			transform: translateX(-200px);
+		}
+	}
+    </style>
+</head>
+
+<body>
+
+    <div id="root">
+        <div class="main">
+            <header>
+                <div>
+                    <div class="app-center">
+                        <nav class="nav">
+                            <span><img src="img/index.png" alt=""></span>
+                            <a href="#" class="nav-index">HOME</span></a>
+                            <a href="#">BLOG</span></a>
+                            <a href="#">WORK</a>
+                            <a href="#">ABOUT</a>
+
+                        </nav>
+
+                        <div class="times">
+                            <a href=""><img src="img/github.png" alt=""></a>
+                            <time></time>
+                        </div>
+                    </div>
+
+                </div>
+            </header>
+
+           
+                
+
+
+
+
+        </div>
+        <div class="bullels">
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+            </div>
+
+        
+    </div>
+    </div>
+
+    <script>
+        window.onload = function () {
+            //初始化时间
+            fnDate();
+
+            //定时器进行当前时间更新
+            setInterval(function () {
+                fnDate();
+            }, 1000);
+            //获取当前时间
+            function fnDate() {
+                var ntime = document.querySelector('.nowtime')
+                var time = document.querySelector('time');
+                var date = new Date();
+                var year = date.getFullYear(); //获取当前年份   
+                var mon = date.getMonth() + 1; //获取当前月份   
+                var da = date.getDate(); //获取当前日   
+                var hours = date.getHours();//小时
+                var minute = date.getMinutes();//分
+                var second = date.getSeconds();//秒
+                var nowtime = fnW(hours) + ":" + fnW(minute) + ":" + fnW(second);
+                var nowtime1 = "Date =  " + fnW(year) + "/" + fnW(mon) + "/" + da;
+                time.innerHTML = nowtime;
+                ntime.innerHTML = nowtime1
+            }
+            //小于10加0
+            function fnW(str) {
+                var num;
+                str > 10 ? num = str : num = "0" + str;
+                return num;
+            }
+
+
+
+
+            //导航栏效果
+            var nava = document.querySelectorAll('.nav a')
+            for (var i = 0; i < nava.length; i++) {
+                nava[i].index = i;
+                nava[i].addEventListener("click", function () {
+                    for (var i = 0; i < nava.length; i++) {
+                        nava[i].classList.remove('nav-index')
+                    }
+                    this.className = 'nav-index'
+                })
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
